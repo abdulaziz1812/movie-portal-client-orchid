@@ -14,7 +14,12 @@ const Favorites = () => {
       </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
           {favorites.map((favorite) => (
-            <FavoritesCard key={favorite._id} favorite={favorite}></FavoritesCard>
+            <FavoritesCard 
+            key={favorite._id} 
+            favorite={favorite}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            ></FavoritesCard>
           ))}
         </div>
         {/* <div className="py-8 w-full">

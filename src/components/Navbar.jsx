@@ -1,3 +1,4 @@
+import { BiMoviePlay } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -48,7 +49,8 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <a className="btn btn-ghost text-3xl font-anton ">Screen Box</a>
+          <BiMoviePlay className="text-6xl"/>
+          <a className="btn btn-ghost text-3xl font-anton font-extralight">Screen Box</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">{link}</ul>
@@ -78,9 +80,11 @@ const Navbar = () => {
             </button>
           </div>
           <div className="flex items-center gap-2">
+            <Link to='/login'>
             <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
               Login
             </button>
+            </Link>
             <Link to='/register'>
             <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
               Register

@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div className="w-11/12 mx-auto max-w-sm ">
       <div>
-        <h2 className="text-center text-4xl pt-4 font-bold">Add Movie</h2>
+        <h2 className="text-center text-4xl pt-4 font-bold">Login</h2>
       </div>
       <form onSubmit={handleSubmit} className="card-body">
         <div className="form-control">

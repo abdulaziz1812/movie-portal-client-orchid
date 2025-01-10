@@ -1,6 +1,8 @@
+import { BiMoviePlay } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook, FaGithub, FaYoutube } from "react-icons/fa";
 import { LiaGooglePlay } from "react-icons/lia";
+import { RiMovieLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -9,7 +11,7 @@ const Footer = () => {
       
       <footer className="footer  text-white p-10 rounded-none gap-4 w-8/12 mx-auto">
         <aside>
-        <LiaGooglePlay className="text-6xl" />
+        <BiMoviePlay className="text-6xl" />
           <p>Screen box</p>
           <p className="text-sm">A New World of Entertainment Awaits</p>
             <nav>

@@ -1,9 +1,40 @@
 import { FaStar } from "react-icons/fa";
-import { Link, } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const FavoritesCard = ({ favorite }) => {
-  const { _id, poster, title, duration, year, selectedGenres, rating } = favorite;
- 
+const FavoritesCard = ({ favorite, favorites , setFavorites }) => {
+  const { _id, poster, title, duration, year, selectedGenres, rating } =
+    favorite;
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/favorites/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+
+              const remainingFavorites = favorites.filter(favorite=> favorite._id !== id)
+              setFavorites(remainingFavorites)
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -40,9 +71,13 @@ const FavoritesCard = ({ favorite }) => {
             <strong>Rating:</strong> {rating}{" "}
             <FaStar className=" text-[#ffd700]" />
           </div>
-          <Link to={`/movies/${_id}`}>
-            <button className="btn btn-sm btn-outline mt-4">Delete Favorite</button>
-          </Link>
+
+          <button
+            className="btn btn-sm btn-outline mt-4"
+            onClick={() => handleDelete(_id)}
+          >
+            Delete Favorite
+          </button>
         </div>
       </div>
     </div>

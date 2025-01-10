@@ -3,54 +3,80 @@ import { AuthContext } from "../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState({});
-  const navigate= useNavigate()
-  
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-   
+
     const name = form.name.value;
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
 
     console.log(email, password);
+
+    const errors = {};
+    if (!name || name.length < 2) {
+      errors.name = "Name must be at least 2 characters long";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      errors.email = "Invalid email format.";
+    }
+
+    const url = /^https?:\/\//;
+    if (!photo || !url.test(photo)) {
+      errors.photo = "Please provide a valid URL for the photo";
+    }
+
+    if (!password || !/[A-Z]/.test(password)) {
+      errors.password = "Password must include at least one uppercase letter";
+    }
+
+    if (!password || !/[a-z]/.test(password)) {
+      errors.password = "Password must include at least one lowercase letter.";
+    }
+    if (!password || password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+    console.log(errors);
+
+    if (Object.keys(errors).length > 0) {
+      setError(errors);
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
-        if(result.user.uid){
+        if (result.user.uid) {
           Swal.fire({
-            title: "Drag me!",
+            title: "Account created successfully ",
             icon: "success",
-            draggable: true
+            draggable: true,
           });
+          form.reset();
         }
-        //  else {Swal.fire({
-        //     icon: "error",
-        //     title: "Oops...",
-        //     text: "Already registered with this email",
-        //     footer: <Link to='/login'> login here</Link>
-        //   });
-        // } 
+        
         console.log(result);
         updateUserProfile({ displayName: name, photoURL: photo })
           .then(() => {
-                      
-            navigate(location?.state ? location.state : "/home")
+            navigate(location?.state ? location.state : "/home");
           })
           .catch((err) => {
             console.log(err);
           });
       })
       .catch((error) => {
-        console.log("error", error);
+        setError({ ...errors, register: error.code });
       });
 
-      form.reset();
+    
+    setError({});
   };
 
   return (
@@ -68,9 +94,11 @@ const Register = () => {
             placeholder="Name"
             className="input input-bordered"
             name="name"
-            required
           />
         </div>
+        {error.name && (
+          <label className="label text-xs text-red-500">{error.name}</label>
+        )}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -80,9 +108,11 @@ const Register = () => {
             placeholder="email"
             className="input input-bordered"
             name="email"
-            required
           />
         </div>
+        {error.email && (
+          <label className="label text-xs text-red-500">{error.email}</label>
+        )}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Photo-URL</span>
@@ -92,9 +122,11 @@ const Register = () => {
             placeholder="Photo-URL"
             className="input input-bordered"
             name="photo"
-            required
           />
         </div>
+        {error.photo && (
+          <label className="label text-xs text-red-500">{error.photo}</label>
+        )}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
@@ -104,17 +136,22 @@ const Register = () => {
             placeholder="password"
             className="input input-bordered"
             name="password"
-            required
           />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">
-              Forgot password?
-            </a>
-          </label>
         </div>
+        {error.password && (
+          <label className="label text-xs text-red-500">{error.password}</label>
+        )}
+        <label className="label">
+          <a href="#" className="label-text-alt link link-hover">
+            Forgot password?
+          </a>
+        </label>
         <div className="form-control mt-6">
           <button className="btn btn-primary"> Register</button>
         </div>
+        {error.register && (
+          <label className="label text-sm text-red-500">{error.register}</label>
+        )}
       </form>
     </div>
   );
