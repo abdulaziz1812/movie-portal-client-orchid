@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const link = (
     <>
       <li>
@@ -49,48 +52,53 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <BiMoviePlay className="text-6xl"/>
-          <a className="btn btn-ghost text-3xl font-anton font-extralight">Screen Box</a>
+          <BiMoviePlay className="text-6xl" />
+          <a className="btn btn-ghost text-3xl font-anton font-extralight">
+            Screen Box
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">{link}</ul>
         </div>
         <div className="navbar-end space-x-2">
-          <div className="flex items-center">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar tooltip tooltip-close tooltip-left"
-                // data-tip={user?.displayName || "Profile"}
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="profile"
-                    src={
-                      // user?.photoURL ||
-                      "https://img.icons8.com/?size=48&id=O9K5DaypaVKw&format=gif"
-                    }
-                  />
+          {user && user?.email ? (
+            <div className="flex items-center">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar tooltip tooltip-close tooltip-left"
+                  data-tip={user?.displayName || "Profile"}
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="profile"
+                      src={
+                        user?.photoURL ||
+                        "https://img.icons8.com/?size=48&id=O9K5DaypaVKw&format=gif"
+                      }
+                    />
+                  </div>
                 </div>
               </div>
+              <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
+                Log Out
+              </button>
             </div>
-            <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
-              Log Out
-            </button>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link to='/login'>
-            <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
-              Login
-            </button>
-            </Link>
-            <Link to='/register'>
-            <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
-              Register
-            </button>
-            </Link>
-          </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Link to="/login">
+                <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

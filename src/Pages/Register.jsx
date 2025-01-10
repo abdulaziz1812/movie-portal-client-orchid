@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile ,setUser } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
@@ -53,6 +53,9 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
         if (result.user.uid) {
           Swal.fire({
             title: "Account created successfully ",
@@ -60,12 +63,11 @@ const Register = () => {
             draggable: true,
           });
           form.reset();
+          navigate(location?.state ? location.state : "/home");
         }
-        
-        console.log(result);
         updateUserProfile({ displayName: name, photoURL: photo })
-          .then(() => {
-            navigate(location?.state ? location.state : "/home");
+          .then((res) => {
+                console.log(res);        
           })
           .catch((err) => {
             console.log(err);
@@ -75,7 +77,6 @@ const Register = () => {
         setError({ ...errors, register: error.code });
       });
 
-    
     setError({});
   };
 
@@ -147,7 +148,7 @@ const Register = () => {
           </a>
         </label>
         <div className="form-control mt-6">
-          <button className="btn btn-primary"> Register</button>
+          <button className="btn btn-outline bg-white "> Register</button>
         </div>
         {error.register && (
           <label className="label text-sm text-red-500">{error.register}</label>
