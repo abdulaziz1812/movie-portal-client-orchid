@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
-  const { createUser, updateUserProfile ,setUser, googleLogin } = useContext(AuthContext);
+  const { createUser, updateUserProfile, setUser, googleLogin } =
+    useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
@@ -68,7 +69,7 @@ const Register = () => {
         }
         updateUserProfile({ displayName: name, photoURL: photo })
           .then((res) => {
-                console.log(res);        
+            console.log(res);
           })
           .catch((err) => {
             console.log(err);
@@ -96,97 +97,97 @@ const Register = () => {
   return (
     <div className="py-6">
       <div className="w-11/12 mx-auto max-w-sm border bg-gray-200 shadow-2xl rounded-2xl ">
-      <div>
-        <h2 className="text-center text-4xl pt-4 font-bold">Register now</h2>
+        <div>
+          <h2 className="text-center text-4xl pt-4 font-bold">Register now</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Name"
+              className="input input-bordered"
+              name="name"
+            />
+          </div>
+          {error.name && (
+            <label className="label text-xs text-red-500">{error.name}</label>
+          )}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="email"
+              className="input input-bordered"
+              name="email"
+            />
+          </div>
+          {error.email && (
+            <label className="label text-xs text-red-500">{error.email}</label>
+          )}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo-URL</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Photo-URL"
+              className="input input-bordered"
+              name="photo"
+            />
+          </div>
+          {error.photo && (
+            <label className="label text-xs text-red-500">{error.photo}</label>
+          )}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="password"
+              className="input input-bordered"
+              name="password"
+            />
+          </div>
+          {error.password && (
+            <label className="label text-xs text-red-500">
+              {error.password}
+            </label>
+          )}
+          
+          <div className="form-control mt-6">
+            <button className="btn btn-outline bg-white "> Register</button>
+          </div>
+          {error.register && (
+            <label className="label text-sm text-red-500">
+              {error.register}
+            </label>
+          )}
+        </form>
+        <p className="text-center font-bold">OR</p>
+        <div className="card-body py-2">
+          <button onClick={handelGoogle} className="btn btn-outline bg-white">
+            <FcGoogle className="text-xl" />
+            Login with Google
+          </button>
+          {error.googleLogin && (
+            <label className="label text-sm text-red-500">
+              {error.googleLogin}
+            </label>
+          )}
+        </div>
+        <p className="text-center font-semibold pb-9">
+          Already have an account ?{" "}
+          <Link className="text-red-500" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
-      <form onSubmit={handleSubmit} className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Name"
-            className="input input-bordered"
-            name="name"
-          />
-        </div>
-        {error.name && (
-          <label className="label text-xs text-red-500">{error.name}</label>
-        )}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input
-            type="email"
-            placeholder="email"
-            className="input input-bordered"
-            name="email"
-          />
-        </div>
-        {error.email && (
-          <label className="label text-xs text-red-500">{error.email}</label>
-        )}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Photo-URL</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Photo-URL"
-            className="input input-bordered"
-            name="photo"
-          />
-        </div>
-        {error.photo && (
-          <label className="label text-xs text-red-500">{error.photo}</label>
-        )}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input
-            type="password"
-            placeholder="password"
-            className="input input-bordered"
-            name="password"
-          />
-        </div>
-        {error.password && (
-          <label className="label text-xs text-red-500">{error.password}</label>
-        )}
-        <label className="label">
-          <a href="#" className="label-text-alt link link-hover">
-            Forgot password?
-          </a>
-        </label>
-        <div className="form-control mt-6">
-          <button className="btn btn-outline bg-white "> Register</button>
-        </div>
-        {error.register && (
-          <label className="label text-sm text-red-500">{error.register}</label>
-        )}
-      </form><p className="text-center font-bold">OR</p>
-            <div className="card-body py-2">
-              <button
-                onClick={handelGoogle}
-                className="btn btn-outline bg-white"
-              >
-                <FcGoogle className="text-xl"/>
-                Login with Google
-              </button>
-              {error.googleLogin && (
-                <label className="label text-sm text-red-500">{error.googleLogin}</label>
-              )}
-            </div>
-            <p className="text-center font-semibold pb-9">
-            Already have an account ?{" "}
-              <Link className="text-red-500" to="/login">
-                Login
-              </Link>
-            </p>
-    </div>
     </div>
   );
 };

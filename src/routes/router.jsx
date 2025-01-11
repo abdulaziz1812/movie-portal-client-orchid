@@ -9,12 +9,14 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Favorites from "../Pages/Favorites";
 import PrivateRouter from "./PrivateRoute";
+import ForgetPassword from "../Pages/ForgetPassword";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <div>error</div>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -68,7 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/forget-password",
-        element: <div>pass</div>,
+        element: <ForgetPassword></ForgetPassword>,
       },
       {
         path: "/about",
@@ -79,7 +81,7 @@ const router = createBrowserRouter([
 
   {
     path: "*",
-    element: <div>error</div>,
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 

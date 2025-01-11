@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddMovie = () => {
   const genresList = [
@@ -19,6 +20,7 @@ const AddMovie = () => {
   const years = Array.from({ length: 10 }, (_, i) => startYear - i);
 
   const [rating, setRating] = useState(0);
+  const { user } = useContext(AuthContext);
 
   const handleRating = (rate) => {
     setRating(rate);
@@ -44,6 +46,7 @@ const AddMovie = () => {
     const duration = form.duration.value;
     const year = form.year.value;
     const summary = form.summary.value;
+    const email = user.email
 
     const newMovie = {
       poster,
@@ -53,6 +56,7 @@ const AddMovie = () => {
       selectedGenres,
       rating,
       summary,
+      email
     };
     console.log(newMovie);
 
@@ -240,7 +244,7 @@ const AddMovie = () => {
             </label>
             <div>
               <Rating
-                key={rating}
+                
                 onClick={handleRating}
                 ratingValue={rating}
                 size={30}
