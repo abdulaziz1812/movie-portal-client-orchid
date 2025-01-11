@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import FavoritesCard from "./FavoritesCard";
 

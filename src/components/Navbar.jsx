@@ -65,7 +65,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-2">
           {user && user?.email ? (
-            <div className="flex items-center">
+            <div className="flex items-center justify-center">
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}

@@ -83,49 +83,51 @@ const MovieDetails = () => {
     //   });
     //   return;
     // }
-    
+
     const email = user.email;
     fetch(`http://localhost:5000/favorites?email=${email}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const favorite = data.some((fav) => fav.title === title);
-      if (favorite) {
-        Swal.fire("This movie is already in your favorites!");
-      } else {
- 
-    const favoriteMovie = {
-      poster,
-      title,
-      selectedGenres,
-      duration,
-      year,
-      rating,
-      summary,
-      email,
-    };
-    
-
-    fetch(`http://localhost:5000/favorites`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(favoriteMovie),
-    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        
-        Swal.fire({
-          title: "Added to Favorites",
-          text: `${title} has been added to your favorites!`,
-          icon: "success",
-          draggable: true
-        });
+        const favoriteCheck = data.some((fav) => fav.title === title);
+        if (favoriteCheck) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "This movie is already in your favorites!",
+          });
+        } else {
+          const favoriteMovie = {
+            poster,
+            title,
+            selectedGenres,
+            duration,
+            year,
+            rating,
+            summary,
+            email,
+          };
+
+          fetch(`http://localhost:5000/favorites`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(favoriteMovie),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+
+              Swal.fire({
+                title: "Added to Favorites",
+                text: `${title} has been added to your favorites!`,
+                icon: "success",
+                draggable: true,
+              });
+            });
+        }
       });
-    }
-  });
-}
+  };
   // const handleAddToFavorite = () => {
   //   if (!favorites.some((fav) => fav.id === movie.id)) {
   //     setFavorites([...favorites, movie]);

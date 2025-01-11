@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
-  const { createUser, updateUserProfile ,setUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile ,setUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
