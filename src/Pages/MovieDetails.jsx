@@ -1,11 +1,23 @@
+import { useContext, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const MovieDetails = () => {
-  
   const movie = useLoaderData();
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const [favorites, setFavorites] = useState([]);
+  console.log(user);
+
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/favorites?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => setFavorites(data));
+    }
+  }, [user]);
 
   const {
     _id,
@@ -42,19 +54,45 @@ const MovieDetails = () => {
                 text: "Your Movie has been deleted.",
                 icon: "success",
               });
+              const remainingFavorites = favorites.filter(
+                (favorite) => favorite._id !== id
+              );
+              setFavorites(remainingFavorites);
               navigate("/all-movie");
             }
           });
       }
     });
   };
-  const handleFavorite = (poster,
+  const handleFavorite = (
+    poster,
     title,
     duration,
     year,
     selectedGenres,
     rating,
-    summary) => {
+    summary
+  ) => {
+    // if (!user) {
+
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Please login to add to favorites!",
+
+    //   });
+    //   return;
+    // }
+    
+    const email = user.email;
+    fetch(`http://localhost:5000/favorites?email=${email}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const favorite = data.some((fav) => fav.title === title);
+      if (favorite) {
+        Swal.fire("This movie is already in your favorites!");
+      } else {
+ 
     const favoriteMovie = {
       poster,
       title,
@@ -63,7 +101,9 @@ const MovieDetails = () => {
       year,
       rating,
       summary,
+      email,
     };
+    
 
     fetch(`http://localhost:5000/favorites`, {
       method: "POST",
@@ -75,8 +115,17 @@ const MovieDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        
+        Swal.fire({
+          title: "Added to Favorites",
+          text: `${title} has been added to your favorites!`,
+          icon: "success",
+          draggable: true
+        });
       });
-  };
+    }
+  });
+}
   // const handleAddToFavorite = () => {
   //   if (!favorites.some((fav) => fav.id === movie.id)) {
   //     setFavorites([...favorites, movie]);

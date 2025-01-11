@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-import { LiaMarkdown } from "react-icons/lia";
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  // console.log(user);
+  const email = user?.email
   const link = (
     <>
       <li>
@@ -18,7 +20,7 @@ const Navbar = () => {
         <NavLink to="/add-movie">Add Movie</NavLink>
       </li>
       <li>
-        <NavLink to="/favorites">My Favorites</NavLink>
+        <NavLink to={`/favorites/${email}`}>My Favorites</NavLink>
       </li>
       <li>
         <NavLink to="/about">About</NavLink>
