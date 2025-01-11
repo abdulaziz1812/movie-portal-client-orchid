@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const UpdateMovie = () => {
   const movie = useLoaderData();
-
+  const { user } = useContext(AuthContext);
   const {
     _id,
     poster,
@@ -51,6 +52,7 @@ const UpdateMovie = () => {
     e.preventDefault();
 
     const form = e.target;
+    const email = user.email;
 
     console.log(form);
     const poster = form.poster.value;
@@ -64,9 +66,10 @@ const UpdateMovie = () => {
       title,
       duration,
       year,
-      selectedGenres : updateGenres, 
-      rating : updateRating,
+      selectedGenres: updateGenres,
+      rating: updateRating,
       summary,
+      email,
     };
     console.log(updateMovie);
 

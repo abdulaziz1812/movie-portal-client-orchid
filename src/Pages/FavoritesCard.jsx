@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const FavoritesCard = ({ favorite, favorites , setFavorites }) => {
+const FavoritesCard = ({ favorite, favorites, setFavorites }) => {
   const { _id, poster, title, duration, year, selectedGenres, rating } =
     favorite;
 
@@ -28,8 +28,10 @@ const FavoritesCard = ({ favorite, favorites , setFavorites }) => {
                 icon: "success",
               });
 
-              const remainingFavorites = favorites.filter(favorite=> favorite._id !== id)
-              setFavorites(remainingFavorites)
+              const remainingFavorites = favorites.filter(
+                (favorite) => favorite._id !== id
+              );
+              setFavorites(remainingFavorites);
             }
           })
           .catch((error) => {

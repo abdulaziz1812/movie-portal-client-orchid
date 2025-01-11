@@ -17,15 +17,14 @@ const FeaturedMovies = () => {
             {movies.map((movie) => (
               <MovieCards key={movie._id} movie={movie}></MovieCards>
             ))}
-
           </div>
-            <div className="py-8 w-full">
-              <Link to='/all-movie'>
+          <div className="py-8 w-full">
+            <Link to="/all-movie">
               <button className="btn btn-outline bg-white w-full">
                 See All Movies
               </button>
-              </Link>
-            </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

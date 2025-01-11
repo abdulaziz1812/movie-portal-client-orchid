@@ -24,7 +24,6 @@ const AddMovie = () => {
 
   const handleRating = (rate) => {
     setRating(rate);
-    // setError("");
   };
 
   const handleGenre = (genre) => {
@@ -46,7 +45,7 @@ const AddMovie = () => {
     const duration = form.duration.value;
     const year = form.year.value;
     const summary = form.summary.value;
-    const email = user.email
+    const email = user.email;
 
     const newMovie = {
       poster,
@@ -56,38 +55,37 @@ const AddMovie = () => {
       selectedGenres,
       rating,
       summary,
-      email
+      email,
     };
     console.log(newMovie);
 
     const errors = {};
     const url = /^https?:\/\//;
     if (!poster || !url.test(poster)) {
-          errors.poster = "Please provide a valid URL for the poster";
+      errors.poster = "Please provide a valid URL for the poster";
     }
 
     if (!title || title.length < 2) {
-           errors.title = "Title must be at least 2 characters long";
+      errors.title = "Title must be at least 2 characters long";
     }
 
     if (selectedGenres.length < 1) {
-           errors.selectedGenres = "Please select a genre";
+      errors.selectedGenres = "Please select a genre";
     }
 
     if (!duration || duration <= 60) {
-           errors.duration = "Duration must be greater than 60 minutes";
+      errors.duration = "Duration must be greater than 60 minutes";
     }
 
     if (!year) {
-            errors.year = "Please select a release year";
+      errors.year = "Please select a release year";
     }
 
     if (!rating) {
-            errors.rating = "Please select a Rating";
+      errors.rating = "Please select a Rating";
     }
 
     if (!summary || summary.length < 10) {
-      
       errors.summary = "Summary must be at least 10 characters long";
     }
 
@@ -244,7 +242,6 @@ const AddMovie = () => {
             </label>
             <div>
               <Rating
-                
                 onClick={handleRating}
                 ratingValue={rating}
                 size={30}

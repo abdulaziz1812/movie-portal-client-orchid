@@ -159,7 +159,7 @@ const Register = () => {
               {error.password}
             </label>
           )}
-          
+
           <div className="form-control mt-6">
             <button className="btn btn-outline bg-white "> Register</button>
           </div>

@@ -1,10 +1,8 @@
-
 import { FaStar } from "react-icons/fa";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const MovieCards = ({ movie}) => {
+const MovieCards = ({ movie }) => {
   const { _id, poster, title, duration, year, selectedGenres, rating } = movie;
- 
 
   return (
     <div>

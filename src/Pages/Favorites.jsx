@@ -39,16 +39,20 @@ const Favorites = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
-        {favorites.length === 0 ? (
-            <p className=" w-full py-6 col-span-3 text-center">No favorites found.</p>):(
-          (favorites.map((favorite) => (
-            <FavoritesCard
-              key={favorite._id}
-              favorite={favorite}
-              favorites={favorites}
-              setFavorites={setFavorites}
-            ></FavoritesCard>
-          ))))}
+          {favorites.length === 0 ? (
+            <p className=" w-full py-6 col-span-3 text-center">
+              No favorites found.
+            </p>
+          ) : (
+            favorites.map((favorite) => (
+              <FavoritesCard
+                key={favorite._id}
+                favorite={favorite}
+                favorites={favorites}
+                setFavorites={setFavorites}
+              ></FavoritesCard>
+            ))
+          )}
         </div>
       </div>
     </div>

@@ -7,17 +7,16 @@ const AllMovie = () => {
   console.log(movies);
   const [search, setSearch] = useState("");
 
-const handelSearch =(e)=>{
-  e.preventDefault();
+  const handelSearch = (e) => {
+    e.preventDefault();
     const searchedInput = e.target.search.value;
     console.log(searchedInput);
-    setSearch(searchedInput)
-  }
-  
+    setSearch(searchedInput);
+  };
+
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(search.toLowerCase())
   );
-  
 
   return (
     <div className="py-6">
@@ -26,23 +25,24 @@ const handelSearch =(e)=>{
           <h2 className="text-center text-4xl pt-4 font-bold">All Movies</h2>
         </div>
 
-        <form 
-        onSubmit={handelSearch}
-        className="py-4 ">
+        <form onSubmit={handelSearch} className="py-4 ">
           <label className="input input-bordered flex items-center gap-2 w-full focus:ring-2 focus:ring-blue-500 ">
-
-          <input type="text" placeholder="Search movies by title" className="grow " name="search" />
-          <input 
-          type="submit"
-          className="btn btn-sm btn-outline"
-          value='Search'
-          />
+            <input
+              type="text"
+              placeholder="Search movies by title"
+              className="grow "
+              name="search"
+            />
+            <input
+              type="submit"
+              className="btn btn-sm btn-outline"
+              value="Search"
+            />
           </label>
-                   
         </form>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-6 gap-6">
-        {filteredMovies.length > 0 ? (
+          {filteredMovies.length > 0 ? (
             filteredMovies.map((movie) => (
               <MovieCards key={movie._id} movie={movie}></MovieCards>
             ))
@@ -52,7 +52,6 @@ const handelSearch =(e)=>{
             </p>
           )}
         </div>
-        
       </div>
     </div>
   );

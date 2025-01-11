@@ -73,8 +73,6 @@ const MovieDetails = () => {
     rating,
     summary
   ) => {
-    
-
     const email = user.email;
     fetch(`http://localhost:5000/favorites?email=${email}`)
       .then((res) => res.json())
@@ -119,13 +117,7 @@ const MovieDetails = () => {
         }
       });
   };
-  // const handleAddToFavorite = () => {
-  //   if (!favorites.some((fav) => fav.id === movie.id)) {
-  //     setFavorites([...favorites, movie]);
-  //   } else {
-  //     alert("Movie is already in your favorites!");
-  //   }
-  // };
+  
   return (
     <div className="p-6 ">
       <div className="w-8/12 mx-auto p-6 bg-white rounded-xl shadow-2xl">

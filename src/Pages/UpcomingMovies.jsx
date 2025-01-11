@@ -30,7 +30,7 @@ const UpcomingMovies = () => {
                 <div className="p-4">
                   <h3 className="text-lg font-bold">{movie.title}</h3>
                   <span className="space-x-1 text-gray-600">
-                  <strong> Genre: </strong>
+                    <strong> Genre: </strong>
                     {movie.genre.map((genre, index) => (
                       <span
                         key={index}
@@ -44,7 +44,8 @@ const UpcomingMovies = () => {
                     <strong>Release: </strong> {movie.releaseDate}
                   </p>
                   <p className="text-sm text-gray-600">
-                    <strong>Duration: </strong>{movie.duration}
+                    <strong>Duration: </strong>
+                    {movie.duration}
                   </p>
                   <p className="text-sm text-gray-600">{movie.description}</p>
                 </div>

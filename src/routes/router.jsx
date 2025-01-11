@@ -29,9 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-movie",
-        element: <PrivateRouter>
-          <AddMovie></AddMovie>,
-        </PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <AddMovie></AddMovie>,
+          </PrivateRouter>
+        ),
       },
       {
         path: "/all-movie",
@@ -40,25 +42,33 @@ const router = createBrowserRouter([
       },
       {
         path: "/movies/:id",
-        element: <PrivateRouter>
-          <MovieDetails></MovieDetails>,
-        </PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <MovieDetails></MovieDetails>,
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/update-movies/:id",
-        element: <PrivateRouter>
-          <UpdateMovie></UpdateMovie>,
-        </PrivateRouter>,
-        loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+        element: (
+          <PrivateRouter>
+            <UpdateMovie></UpdateMovie>,
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/favorites/:email",
-        element: <PrivateRouter>
-          <Favorites></Favorites>,
-        </PrivateRouter>,
-        loader: ({params}) => fetch(`http://localhost:5000/favorites?email=${params.email}`),
+        element: (
+          <PrivateRouter>
+            <Favorites></Favorites>,
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/favorites?email=${params.email}`),
       },
       {
         path: "/login",
