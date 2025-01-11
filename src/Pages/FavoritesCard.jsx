@@ -24,13 +24,16 @@ const FavoritesCard = ({ favorite, favorites , setFavorites }) => {
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Deleted from favorite movie list",
                 icon: "success",
               });
 
               const remainingFavorites = favorites.filter(favorite=> favorite._id !== id)
               setFavorites(remainingFavorites)
             }
+          })
+          .catch((error) => {
+            Swal.fire("Error!", error.message, "error");
           });
       }
     });

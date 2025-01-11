@@ -1,0 +1,32 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "Avengers: Secret Wars",
+        "poster": "https://i.ibb.co.com/VmL1WSk/Avengers-Secret-Wars.jpg",
+        "releaseDate": "2025-05-01",
+        "genre": ["Action", "Sci-Fi"],
+        "duration": "180 min",
+        "description": "The Avengers face their biggest challenge yet as the multiverse collides."
+      },
+      {
+        "id": 2,
+        "title": "The Batman: Gotham's Rebirth",
+        "poster": "https://i.ibb.co.com/Z2hVZCR/The-Batman.jpg",
+        "releaseDate": "2025-07-15",
+        "genre": ["Action", "Drama"],
+        "duration": "155 min",
+        "description": "Bruce Wayne returns to protect Gotham from a new wave of villains."
+      },
+      {
+        "id": 3,
+        "title": "Frozen 3",
+        "poster": "https://i.ibb.co.com/BCBB028/Frozen-3.jpg",
+        "releaseDate": "2025-11-22",
+        "genre": ["Animation", "Adventure"],
+        "duration": "120 min",
+        "description": "Anna and Elsa embark on a magical adventure to save their kingdom."
+      }
+    ]
+  }
+  

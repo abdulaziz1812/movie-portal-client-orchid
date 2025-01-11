@@ -11,7 +11,8 @@ console.log(movies);
   };
 
   return (
-    <div className="w-9/12 mx-auto ">
+    <div className="py-6">
+      <div className="w-9/12 mx-auto bg-gray-200 px-6 rounded-2xl shadow-2xl">
       <div>
           <h2 className="text-center text-4xl pt-4 font-bold">All Movies</h2>
       </div>
@@ -32,6 +33,7 @@ console.log(movies);
           </button>
           </div>
           
+    </div>
     </div>
   );
 };

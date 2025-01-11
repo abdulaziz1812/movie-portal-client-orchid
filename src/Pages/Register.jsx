@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const { createUser, updateUserProfile ,setUser } = useContext(AuthContext);
@@ -80,8 +81,21 @@ const Register = () => {
     setError({});
   };
 
+  const handelGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(location?.state ? location.state : "/home");
+      })
+      .catch((err) => {
+        setError({ ...error, googleLogin: err.code });
+      });
+  };
+
   return (
-    <div className="w-11/12 mx-auto max-w-sm ">
+    <div className="py-6">
+      <div className="w-11/12 mx-auto max-w-sm border bg-gray-200 shadow-2xl rounded-2xl ">
       <div>
         <h2 className="text-center text-4xl pt-4 font-bold">Register now</h2>
       </div>
@@ -153,7 +167,26 @@ const Register = () => {
         {error.register && (
           <label className="label text-sm text-red-500">{error.register}</label>
         )}
-      </form>
+      </form><p className="text-center font-bold">OR</p>
+            <div className="card-body py-2">
+              <button
+                onClick={handelGoogle}
+                className="btn btn-outline bg-white"
+              >
+                <FcGoogle className="text-xl"/>
+                Login with Google
+              </button>
+              {error.googleLogin && (
+                <label className="label text-sm text-red-500">{error.googleLogin}</label>
+              )}
+            </div>
+            <p className="text-center font-semibold pb-9">
+            Already have an account ?{" "}
+              <Link className="text-red-500" to="/login">
+                Login
+              </Link>
+            </p>
+    </div>
     </div>
   );
 };

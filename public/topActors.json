@@ -1,0 +1,26 @@
+{
+    "topActors": [
+      {
+        "id": 1,
+        "name": "Robert Downey Jr.",
+        "profilePicture": "https://i.ibb.co.com/d466Ddr/Robert-Downey-Jr.jpg",
+        "notableMovies": ["Iron Man", "Sherlock Holmes", "Avengers: Endgame"],
+        "awards": ["2 Golden Globes", "1 Academy Award Nomination"]
+      },
+      {
+        "id": 2,
+        "name": "Scarlett Johansson",
+        "profilePicture": "https://i.ibb.co.com/k9bQXR1/Scarlett-Johansson.jpg",
+        "notableMovies": ["Black Widow", "Lost in Translation", "Marriage Story"],
+        "awards": ["1 BAFTA", "2 Academy Award Nominations"]
+      },
+      {
+        "id": 3,
+        "name": "Chris Hemsworth",
+        "profilePicture": "https://i.ibb.co.com/bmKqgnr/Chris-Hemsworth.jpg",
+        "notableMovies": ["Thor", "Extraction", "Rush"],
+        "awards": ["1 People’s Choice Award", "2 Teen Choice Awards"]
+      }
+    ]
+  }
+  

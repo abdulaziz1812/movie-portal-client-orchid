@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { LiaMarkdown } from "react-icons/lia";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -81,7 +82,9 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <button className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
+              <button 
+              onClick={logOut}
+              className="btn btn-sm  hover:bg-[#2b3440] hover:text-white">
                 Log Out
               </button>
             </div>

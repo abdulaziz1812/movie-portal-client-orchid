@@ -7,10 +7,10 @@ const Favorites = () => {
   const [favorites, setFavorites] = useState(loadedFavorites);
   console.log(favorites);
   return (
-    <div>
-      <div className="w-9/12 mx-auto ">
+    <div className="py-6">
+      <div className="w-9/12 mx-auto border rounded-2xl px-6 bg-gray-200 shadow-2xl">
       <div>
-          <h2 className="text-center text-4xl pt-4 font-bold">All Movies</h2>
+          <h2 className="text-center text-4xl pt-4 font-bold">My Favorite Movies</h2>
       </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
           {favorites.map((favorite) => (

@@ -3,6 +3,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MovieDetails = () => {
+  
   const movie = useLoaderData();
   const navigate = useNavigate();
 

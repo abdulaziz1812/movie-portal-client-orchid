@@ -8,7 +8,7 @@ const MovieCards = ({ movie}) => {
 
   return (
     <div>
-      <div className=" card shadow-2xl  bg-base-100 overflow-hidden transform transition-transform duration-500 hover:scale-105 hover:bg-gray-200">
+      <div className=" card shadow-2xl  bg-base-100 overflow-hidden transform transition-transform duration-500 hover:scale-105 hover:bg-gray-200 ">
         <div>
           <img
             src={poster}
@@ -16,7 +16,7 @@ const MovieCards = ({ movie}) => {
             className="h-96 w-full object-cover object-top  "
           />
         </div>
-        <div className="p-4">
+        <div className="p-4 flex-grow flex flex-col justify-between h-[250px]">
           <h3 className="text-xl font-semibold">{title}</h3>
           <div className="text-sm text-gray-600  ">
             <strong> Genre: </strong>

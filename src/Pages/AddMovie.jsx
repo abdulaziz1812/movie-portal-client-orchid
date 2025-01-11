@@ -121,8 +121,8 @@ const AddMovie = () => {
   };
 
   return (
-    <div>
-      <div className="w-11/12 mx-auto">
+    <div className="py-6">
+      <div className="w-11/12 mx-auto border rounded-2xl bg-gray-200 shadow-xl">
         <div>
           <h2 className="text-center text-4xl pt-4 font-bold">Add Movie</h2>
         </div>

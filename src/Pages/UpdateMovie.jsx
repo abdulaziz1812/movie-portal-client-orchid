@@ -64,8 +64,8 @@ const UpdateMovie = () => {
       title,
       duration,
       year,
-      selectedGenres,
-      rating,
+      selectedGenres : updateGenres, 
+      rating : updateRating,
       summary,
     };
     console.log(updateMovie);
