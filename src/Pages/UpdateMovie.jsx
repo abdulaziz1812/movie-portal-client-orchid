@@ -54,7 +54,6 @@ const UpdateMovie = () => {
     const form = e.target;
     const email = user.email;
 
-    console.log(form);
     const poster = form.poster.value;
     const title = form.title.value;
     const duration = form.duration.value;
@@ -71,7 +70,6 @@ const UpdateMovie = () => {
       summary,
       email,
     };
-    console.log(updateMovie);
 
     const errors = {};
     const url = /^https?:\/\//;
@@ -103,15 +101,13 @@ const UpdateMovie = () => {
       errors.summary = "Summary must be at least 10 characters long";
     }
 
-    console.log(errors);
-
     if (Object.keys(errors).length > 0) {
       setError(errors);
       return;
     }
 
     // send data to server
-    fetch(`http://localhost:5000/movies/${_id}`, {
+    fetch(`https://movie-portal-server-ashen.vercel.app/movies/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -120,7 +116,6 @@ const UpdateMovie = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Movie Updated successfully",

@@ -19,7 +19,7 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
 
-    console.log(email, password);
+
 
     const errors = {};
     if (!name || name.length < 2) {
@@ -46,7 +46,7 @@ const Register = () => {
     if (!password || password.length < 6) {
       errors.password = "Password must be at least 6 characters";
     }
-    console.log(errors);
+
 
     if (Object.keys(errors).length > 0) {
       setError(errors);
@@ -56,7 +56,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         setUser(user);
         if (result.user.uid) {
           Swal.fire({
@@ -69,10 +69,10 @@ const Register = () => {
         }
         updateUserProfile({ displayName: name, photoURL: photo })
           .then((res) => {
-            console.log(res);
+
           })
           .catch((err) => {
-            console.log(err);
+
           });
       })
       .catch((error) => {

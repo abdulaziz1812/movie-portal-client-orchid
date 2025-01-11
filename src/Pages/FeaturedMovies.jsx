@@ -3,7 +3,6 @@ import MovieCards from "./MovieCards";
 
 const FeaturedMovies = () => {
   const movies = useLoaderData();
-  console.log(movies);
   return (
     <div>
       <div className="py-6">

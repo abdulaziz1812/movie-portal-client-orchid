@@ -6,14 +6,15 @@ import { AuthContext } from "../providers/AuthProvider";
 const Favorites = () => {
   const loadedFavorites = useLoaderData();
   const [favorites, setFavorites] = useState(loadedFavorites);
-  console.log(favorites);
   const { user, loading } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (user && user.email) {
       setIsLoading(true);
-      fetch(`http://localhost:5000/favorites?email=${user.email}`)
+      fetch(
+        `https://movie-portal-server-ashen.vercel.app/favorites?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setFavorites(data);

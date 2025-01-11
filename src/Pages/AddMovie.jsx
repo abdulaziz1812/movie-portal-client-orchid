@@ -39,7 +39,6 @@ const AddMovie = () => {
 
     const form = e.target;
 
-    console.log(form);
     const poster = form.poster.value;
     const title = form.title.value;
     const duration = form.duration.value;
@@ -57,7 +56,6 @@ const AddMovie = () => {
       summary,
       email,
     };
-    console.log(newMovie);
 
     const errors = {};
     const url = /^https?:\/\//;
@@ -89,15 +87,13 @@ const AddMovie = () => {
       errors.summary = "Summary must be at least 10 characters long";
     }
 
-    console.log(errors);
-
     if (Object.keys(errors).length > 0) {
       setError(errors);
       return;
     }
 
     // send data to server
-    fetch("http://localhost:5000/movies", {
+    fetch("https://movie-portal-server-ashen.vercel.app/movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -106,7 +102,6 @@ const AddMovie = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "New Movie added successfully",
@@ -126,7 +121,9 @@ const AddMovie = () => {
     <div className="py-6">
       <div className="w-11/12 mx-auto border rounded-2xl bg-gray-200 shadow-xl">
         <div>
-          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">Add Movie</h2>
+          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">
+            Add Movie
+          </h2>
         </div>
         <form
           onSubmit={handleSubmit}

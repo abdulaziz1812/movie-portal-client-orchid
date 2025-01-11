@@ -9,11 +9,12 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [favorites, setFavorites] = useState([]);
-  console.log(user);
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/favorites?email=${user.email}`)
+      fetch(
+        `https://movie-portal-server-ashen.vercel.app/favorites?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => setFavorites(data));
     }
@@ -31,7 +32,6 @@ const MovieDetails = () => {
   } = movie;
 
   const handleDelete = (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,12 +42,11 @@ const MovieDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://movie-portal-server-ashen.vercel.app/movies/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -74,7 +73,9 @@ const MovieDetails = () => {
     summary
   ) => {
     const email = user.email;
-    fetch(`http://localhost:5000/favorites?email=${email}`)
+    fetch(
+      `https://movie-portal-server-ashen.vercel.app/favorites?email=${email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         const favoriteCheck = data.some((fav) => fav.title === title);
@@ -96,7 +97,7 @@ const MovieDetails = () => {
             email,
           };
 
-          fetch(`http://localhost:5000/favorites`, {
+          fetch(`https://movie-portal-server-ashen.vercel.app/favorites`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -105,8 +106,6 @@ const MovieDetails = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
-
               Swal.fire({
                 title: "Added to Favorites",
                 text: `${title} has been added to your favorites!`,
@@ -117,7 +116,7 @@ const MovieDetails = () => {
         }
       });
   };
-  
+
   return (
     <div className="p-6 ">
       <div className="lg:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-2xl">

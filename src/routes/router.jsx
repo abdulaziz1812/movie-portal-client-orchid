@@ -26,7 +26,8 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/featured-movies"),
+        loader: () =>
+          fetch("https://movie-portal-server-ashen.vercel.app/featured-movies"),
       },
       {
         path: "/add-movie",
@@ -39,7 +40,8 @@ const router = createBrowserRouter([
       {
         path: "/all-movie",
         element: <AllMovie></AllMovie>,
-        loader: () => fetch("http://localhost:5000/movies"),
+        loader: () =>
+          fetch("https://movie-portal-server-ashen.vercel.app/movies"),
       },
       {
         path: "/movies/:id",
@@ -49,7 +51,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(
+            `https://movie-portal-server-ashen.vercel.app/movies/${params.id}`
+          ),
       },
       {
         path: "/update-movies/:id",
@@ -59,7 +63,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(
+            `https://movie-portal-server-ashen.vercel.app/movies/${params.id}`
+          ),
       },
       {
         path: "/favorites/:email",
@@ -69,7 +75,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/favorites?email=${params.email}`),
+          fetch(
+            `https://movie-portal-server-ashen.vercel.app/favorites?email=${params.email}`
+          ),
       },
       {
         path: "/login",
