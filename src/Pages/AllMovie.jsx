@@ -22,7 +22,7 @@ const AllMovie = () => {
     <div className="py-6">
       <div className="w-9/12 mx-auto bg-gray-200 px-6 rounded-2xl shadow-2xl">
         <div>
-          <h2 className="text-center text-4xl pt-4 font-bold">All Movies</h2>
+          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">All Movies</h2>
         </div>
 
         <form onSubmit={handelSearch} className="py-4 ">

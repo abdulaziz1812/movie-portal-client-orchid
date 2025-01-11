@@ -18,7 +18,7 @@ const Home = () => {
         theme === "light" ? "bg-base-100" : " bg-[#262626]"
       }`}
     >
-      <div className="fixed  bg-black p-3 rounded-b-3xl  backdrop-blur z-50">
+      <div className="fixed  bg-[#262626] p-3 rounded-b-3xl transform right-2 backdrop-blur z-50">
         <label className="flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -120,7 +120,7 @@ const MovieDetails = () => {
   
   return (
     <div className="p-6 ">
-      <div className="w-8/12 mx-auto p-6 bg-white rounded-xl shadow-2xl">
+      <div className="lg:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-2xl">
         <h2 className="text-3xl text-center  font-bold mb-4 text ">
           {title.toUpperCase()}
         </h2>
@@ -165,9 +165,9 @@ const MovieDetails = () => {
             </div>
 
             {/* Buttons */}
-            <div className="flex space-x-4">
+            <div className="flex flex-col xl:flex-row gap-4">
               <button
-                className="btn btn-error text-white"
+                className="btn btn-outline bg-red-500 text-white"
                 onClick={() => handleDelete(_id)}
               >
                 Delete Movie

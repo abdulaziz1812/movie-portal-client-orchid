@@ -11,6 +11,7 @@ import Favorites from "../Pages/Favorites";
 import PrivateRouter from "./PrivateRoute";
 import ForgetPassword from "../Pages/ForgetPassword";
 import ErrorPage from "../Pages/ErrorPage";
+import About from "../Pages/About";
 
 const router = createBrowserRouter([
   {
@@ -84,7 +85,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <div>about</div>,
+        element: <About></About>,
       },
     ],
   },

@@ -34,7 +34,7 @@ const Favorites = () => {
     <div className="py-6">
       <div className="w-9/12 mx-auto border rounded-2xl px-6 bg-gray-200 shadow-2xl">
         <div>
-          <h2 className="text-center text-4xl pt-4 font-bold">
+          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">
             My Favorite Movies
           </h2>
         </div>

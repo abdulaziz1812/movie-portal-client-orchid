@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <div className="py-6">
       <div className="w-11/12 mx-auto max-w-sm border bg-gray-200 rounded-2xl shadow-2xl">
-        <h2 className="text-center text-4xl pt-4 font-bold">Login</h2>
+        <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">Login</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
           <div className="form-control">
             <label className="label">

@@ -138,13 +138,13 @@ const UpdateMovie = () => {
     <div>
       <div className="w-11/12 mx-auto">
         <div>
-          <h2 className="text-center text-4xl pt-4 font-bold">
+          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">
             Update Movie : {title}
           </h2>
         </div>
         <form
           onSubmit={handleSubmit}
-          className="card-body grid grid-cols-2 gap-4"
+          className="card-body md:grid grid-cols-2 gap-4"
         >
           <div className="form-control">
             <label className="label">

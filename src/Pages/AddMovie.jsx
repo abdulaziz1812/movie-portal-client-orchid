@@ -126,11 +126,11 @@ const AddMovie = () => {
     <div className="py-6">
       <div className="w-11/12 mx-auto border rounded-2xl bg-gray-200 shadow-xl">
         <div>
-          <h2 className="text-center text-4xl pt-4 font-bold">Add Movie</h2>
+          <h2 className="text-center text-xl md:text-4xl pt-4 font-bold">Add Movie</h2>
         </div>
         <form
           onSubmit={handleSubmit}
-          className="card-body grid grid-cols-2 gap-4"
+          className="card-body md:grid grid-cols-2 gap-4"
         >
           <div className="form-control">
             <label className="label">
@@ -205,7 +205,7 @@ const AddMovie = () => {
             <label className="label">
               <span className="label-text">Genre</span>
             </label>
-            <div className="dropdown ">
+            <div className="dropdown z-10">
               <div tabIndex={0} className="btn btn-outline font-normal ">
                 {selectedGenres.length > 0
                   ? `Selected: ${selectedGenres.join(", ")}`
