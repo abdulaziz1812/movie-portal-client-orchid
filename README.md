@@ -3,7 +3,7 @@
 Welcome to **Movie Portal** — a web application to add, discover, manage, and update your favorite movies. This platform allows users to explore movie details, manage their favorites list, and stay updated with the latest movie releases.
 
 ## Live Website URL
-[Visit the live site](http://your-live-site-url.com)
+[Visit the live site (Screen box) ](https://movie-portal-716dd.web.app/)
 
 ## Features
 
